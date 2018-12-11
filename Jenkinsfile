@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  tools {
+  maven 'Maven3'
+  jdk 'JDK1.8'
+  }
   stages {
     stage('Checkout') {
       steps {
@@ -10,6 +14,14 @@ pipeline {
       steps {
         bat(script: 'mvn clean install', returnStatus: true)
       }
+      post {
+        success {
+
+        junit 'target/surefire-reports/**/*.xml'
+        }
+
+      }
+
     }
   }
 }
