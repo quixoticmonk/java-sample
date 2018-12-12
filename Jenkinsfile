@@ -11,21 +11,23 @@ pipeline{
                 echo 'Inside Build Stage'
             }
         }
-        parallel{
-            stage('Test 1'){
-                steps{
-                    echo 'Inside test1 stage'
+        stage("Test Code"){
+            parallel{
+                stage('Test 1'){
+                    steps{
+                        echo 'Inside test1 stage'
+                    }
+                }
+                stage('Test 2'){
+                    steps{
+                        echo 'Inside test2 stage'
+                    }
                 }
             }
-            stage('Test 2'){
+            stage('Report'){
                 steps{
-                    echo 'Inside test2 stage'
+                    echo 'Inside Reporting stage'
                 }
-            }
-        }
-        stage('Report'){
-            steps{
-                echo 'Inside Reporting stage'
             }
         }
     }
