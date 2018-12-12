@@ -102,8 +102,8 @@ pipeline{
                 echo 'Inside Notifications stage'
             }
         }
-        post {
-            always {
+        post{
+            always{
                 archive "target/**/*"
                 junit 'target/surefire-reports/*.xml'
             }
