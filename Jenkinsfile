@@ -24,10 +24,10 @@ pipeline{
                     }
                 }
             }
-            stage('Report'){
-                steps{
-                    echo 'Inside Reporting stage'
-                }
+        }
+        stage("Report"){
+            steps{
+                echo 'Inside Reporting stage'
             }
         }
     }
