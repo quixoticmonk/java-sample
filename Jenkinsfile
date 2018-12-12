@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    tools {
+        maven 'Maven3'
+    }
     stages{
         stage("Initialize"){
             steps{
@@ -20,6 +23,8 @@ pipeline{
         stage("Build Code"){
             steps{
                 echo 'Inside Build Stage'
+                bat 'mvn --version"
+                bat 'mvn clean install'
             }
         }
         stage("Test Stages"){
