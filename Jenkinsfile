@@ -8,7 +8,13 @@ pipeline{
          }
         stage("Checkout Code"){
             steps{
-                echo 'Inside Code checkout stage'
+                checkout([$class: 'GitSCM',
+                branches: [[name: '*/master']],
+                doGenerateSubmoduleConfigurations: false,
+                extensions: [],
+                submoduleCfg: [],
+                userRemoteConfigs:
+                [[credentialsId: 'manugit', url: 'https://github.com/quixoticmonk/java-sample.git']]])
             }
         }
         stage("Build Code"){
@@ -20,12 +26,12 @@ pipeline{
             parallel{
                 stage('Unit Tests'){
                     steps{
-                        echo 'Inside test1 stage'
+                        echo 'Inside unit tests stage'
                     }
                 }
                 stage('Integration Tests'){
                     steps{
-                        echo 'Inside test2 stage'
+                        echo 'Inside Integration tests stage'
                     }
                 }
                 stage('Functional UI Tests'){
@@ -64,7 +70,6 @@ pipeline{
                 echo 'Predeploy tasks'
             }
         }
-
         stage('Should we deploy to Dev ?') {
           agent none
           steps {
@@ -80,6 +85,11 @@ pipeline{
             }
             steps{
                 echo 'Deploy to Test Server'
+            }
+        }
+        stage('performance Tests'){
+            steps{
+                echo 'Inside perf tests'
             }
         }
         stage("Emails/Notifications"){
