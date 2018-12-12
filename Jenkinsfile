@@ -29,7 +29,7 @@ pipeline{
                     }
                 }
                 stage('Functional UI Tests'){
-                    steps(
+                    steps{
                         echo 'Inside UI tests'
                     }
                 }
