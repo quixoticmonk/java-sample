@@ -2,21 +2,31 @@ pipeline{
     agent any
     stages{
         stage("Checkout Code"){
-            echo 'Inside Code checkout stage'
+            steps{
+                echo 'Inside Code checkout stage'
+            }
         }
         stage("Build Code"){
-            echo 'Inside Build Stage'
+            steps{
+                echo 'Inside Build Stage'
+            }
         }
         parallel{
             stage('Test 1'){
-                echo 'Inside test1 stage'
+                steps{
+                    echo 'Inside test1 stage'
+                }
             }
             stage('Test 2'){
-                echo 'Inside test2 stage'
+                steps{
+                    echo 'Inside test2 stage'
+                }
             }
         }
         stage('Report'){
-            echo 'Inside Reporting stage'
+            steps{
+                echo 'Inside Reporting stage'
+            }
         }
     }
 }
