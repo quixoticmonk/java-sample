@@ -28,13 +28,13 @@ pipeline {
 
         stage('Test1') {
           steps {
-            echo ' test1' )
+            echo ' test1'
                 }
         }
 
          stage('Test2') {
                   steps {
-                    echo ' test1' )
+                    echo ' test1'
                         }
                 }
     }
