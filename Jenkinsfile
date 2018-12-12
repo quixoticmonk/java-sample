@@ -23,7 +23,7 @@ pipeline{
         stage("Build Code"){
             steps{
                 echo 'Inside Build Stage'
-                bat 'mvn --version"
+                bat 'mvn --version'
                 bat 'mvn clean install'
             }
         }
