@@ -48,7 +48,7 @@ pipeline{
                     }
                 }
                 stage('BlackDuck scans'){
-                    steps(
+                    steps{
                         echo 'Inside blackduck scans'
                     }
                 }
