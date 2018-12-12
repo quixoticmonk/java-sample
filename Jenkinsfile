@@ -64,7 +64,20 @@ pipeline{
                 echo 'Predeploy tasks'
             }
         }
+
+        stage('Should we deploy to Dev ?') {
+          agent none
+          steps {
+            script {
+              env.USER_INPUT = input message: 'User input required',
+                  parameters: [choice(name: 'Should we deploy to Dev?', choices: 'no\nyes', description: 'Choose "yes" if you want to deploy this build')]
+            }
+          }
+        }
         stage("Deploy to server"){
+            when{
+                environment name: 'USER_INPUT', value: 'yes'
+            }
             steps{
                 echo 'Deploy to Test Server'
             }
