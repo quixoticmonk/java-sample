@@ -24,7 +24,6 @@ pipeline{
             steps{
                 echo 'Inside Build Stage'
                 bat 'mvn --version'
-                bat 'mvn clean install'
             }
         }
         stage("Test Stages"){
@@ -32,6 +31,7 @@ pipeline{
                 stage('Unit Tests'){
                     steps{
                         echo 'Inside unit tests stage'
+                        bat 'mvn clean install'
                     }
                 }
                 stage('Integration Tests'){
@@ -100,6 +100,12 @@ pipeline{
         stage("Emails/Notifications"){
             steps{
                 echo 'Inside Notifications stage'
+            }
+        }
+        post {
+            always {
+                archive "target/**/*"
+                junit 'target/surefire-reports/*.xml'
             }
         }
     }
