@@ -16,17 +16,16 @@ pipeline {
     }
 
     stage('Build') {
+
       steps {
         bat(script: 'mvn clean install', returnStatus: true)
       }
-      post {
-        success {
-        junit 'target/surefire-reports/**/*.xml'
-                }
-      }
+
+
     }
 
     parallel{
+
         stage('Test1') {
           steps {
             echo ' test1' )
@@ -40,8 +39,11 @@ pipeline {
                 }
     }
 
-
-
+    post {
+        success {
+        junit 'target/surefire-reports/**/*.xml'
+                }
+      }
 
 
   }
