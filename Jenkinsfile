@@ -90,6 +90,9 @@ pipeline{
             }
             steps{
                 echo 'Deploy to Test Server'
+                pushToCloudFoundry cloudSpace: 'manu',
+                credentialsId: '37641d8f-73e2-4534-9e60-71f6aadd9e51',
+                organization: 'Columbus-Dev', target: 'https://api.sys.apbg.apcf.io'
             }
         }
         stage('performance Tests'){
