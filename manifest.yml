@@ -1,7 +1,7 @@
 ---
 applications:
         - name: sampleapp
-          path: /target/Demo-1.0-SNAPSHOT.jar
+          path: C:/Users/manu.chandrasekhar/.jenkins/workspace/java-sample_master/target/Demo-1.0-SNAPSHOT.jar
           memory: 1G
           disk_quota: 1G
           instances: 1
