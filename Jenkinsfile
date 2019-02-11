@@ -7,6 +7,7 @@ pipeline{
         stage("Initialize"){
             steps{
                 echo 'Inside the Initialize stage'
+                echo ' '
             }
          }
         stage("Checkout Code"){
