@@ -14,6 +14,12 @@ pipeline{
                 sh 'mvn --version'
             }
         }
+        stage("Dependency check"){
+            steps{
+                dependencyCheck additionalArguments: '', odcInstallation: 'OwaspDep'
+                dependencyCheckPublisher pattern: ''
+            }
+        }
         stage("Test Stages"){
             parallel{
                 stage('Unit Tests'){
