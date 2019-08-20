@@ -69,26 +69,7 @@ pipeline{
                 echo 'Predeploy tasks'
             }
         }
-        stage('Should we deploy to Dev ?') {
-          agent none
-          steps {
-            script {
-              env.USER_INPUT = input message: 'User input required',
-                  parameters: [choice(name: 'Should we deploy to Dev?', choices: 'no\nyes', description: 'Choose "yes" if you want to deploy this build')]
-            }
-          }
-        }
-        stage("Deploy to server"){
-            when{
-                environment name: 'USER_INPUT', value: 'yes'
-            }
-            steps{
-                echo 'Deploy to Test Server'
-                pushToCloudFoundry cloudSpace: 'manu',
-                credentialsId: '37641d8f-73e2-4534-9e60-71f6aadd9e51',
-                organization: 'Columbus-Dev', target: 'https://api.sys.apbg.apcf.io'
-            }
-        }
+
         stage('performance Tests'){
             steps{
                 echo 'Inside perf tests'
