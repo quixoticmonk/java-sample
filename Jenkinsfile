@@ -11,7 +11,7 @@ pipeline{
         stage("Build Code"){
             steps{
                 echo 'Inside Build Stage'
-                bat 'mvn --version'
+                sh 'mvn --version'
             }
         }
         stage("Test Stages"){
@@ -19,7 +19,7 @@ pipeline{
                 stage('Unit Tests'){
                     steps{
                         echo 'Inside unit tests stage'
-                        bat 'mvn clean package'
+                        sh 'mvn clean package'
                     }
                 }
                 stage('Integration Tests'){
