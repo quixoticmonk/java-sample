@@ -10,17 +10,6 @@ pipeline{
                 echo ' '
             }
          }
-        stage("Checkout Code"){
-            steps{
-                checkout([$class: 'GitSCM',
-                branches: [[name: '*/master']],
-                doGenerateSubmoduleConfigurations: false,
-                extensions: [],
-                submoduleCfg: [],
-                userRemoteConfigs:
-                [[credentialsId: 'manugit', url: 'https://github.com/quixoticmonk/java-sample.git']]])
-            }
-        }
         stage("Build Code"){
             steps{
                 echo 'Inside Build Stage'
@@ -32,7 +21,7 @@ pipeline{
                 stage('Unit Tests'){
                     steps{
                         echo 'Inside unit tests stage'
-                        bat 'mvn clean install'
+                        bat 'mvn clean package'
                     }
                 }
                 stage('Integration Tests'){
