@@ -11,7 +11,7 @@ pipeline{
         stage("Build Code"){
             steps{
                 echo 'Inside Build Stage'
-                sh 'mvn --version'
+                sh 'mvn clean package'
             }
         }
         stage("Dependency check"){
@@ -25,7 +25,7 @@ pipeline{
                 stage('Unit Tests'){
                     steps{
                         echo 'Inside unit tests stage'
-                        sh 'mvn clean package'
+                        //sh 'mvn clean package'
                     }
                 }
                 stage('Integration Tests'){
